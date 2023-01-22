@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Net;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace GarticCheat
 {
@@ -15,6 +11,22 @@ namespace GarticCheat
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(imageURL.Text != "")
+            {
+                using (WebClient webClient = new WebClient())
+                {
+                    byte[] imageBytes = webClient.DownloadData(imageURL.Text);
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    {
+                        Image image = Image.FromStream(ms);
+                        imagePreview.Image = image;
+                    }
+                }
+            }
         }
     }
 }
