@@ -32,6 +32,7 @@
             this.imageURL = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.imagePreview = new System.Windows.Forms.PictureBox();
+            this.logLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imagePreview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,6 +66,7 @@
             // 
             // imagePreview
             // 
+            this.imagePreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imagePreview.Location = new System.Drawing.Point(12, 96);
             this.imagePreview.Name = "imagePreview";
             this.imagePreview.Size = new System.Drawing.Size(295, 157);
@@ -72,11 +74,21 @@
             this.imagePreview.TabIndex = 3;
             this.imagePreview.TabStop = false;
             // 
+            // logLabel
+            // 
+            this.logLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.logLabel.Location = new System.Drawing.Point(12, 473);
+            this.logLabel.Name = "logLabel";
+            this.logLabel.Size = new System.Drawing.Size(295, 76);
+            this.logLabel.TabIndex = 5;
+            this.logLabel.Text = "Log :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 450);
+            this.ClientSize = new System.Drawing.Size(319, 558);
+            this.Controls.Add(this.logLabel);
             this.Controls.Add(this.imagePreview);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.imageURL);
@@ -95,6 +107,7 @@
         private System.Windows.Forms.TextBox imageURL;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox imagePreview;
+        private System.Windows.Forms.Label logLabel;
     }
 }
 
