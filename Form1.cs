@@ -38,7 +38,6 @@ namespace GarticCheat
             colors.Add(Color.FromArgb(254, 175, 168));
 
             formColor = BackColor;
-            // panel1.BackColor = Color.FromArgb(100, 30, 30, 30);
 
             Log(colors.Count + " colors loaded !");
         }
@@ -137,6 +136,9 @@ namespace GarticCheat
 
         private void button2_Click(object sender, EventArgs e)
         {
+            start = new Point(0, 0);
+            end = new Point(0, 0);
+
             panel1.Visible = true;
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
