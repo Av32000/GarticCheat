@@ -4,11 +4,20 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace GarticCheat
 {
     public partial class Form1 : Form
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, UIntPtr dwExtraInfo);
+
+        private const int MOUSEEVENTF_LEFTDOWN = 0x02;
+        private const int MOUSEEVENTF_LEFTUP = 0x04;
+        private const int MOUSEEVENTF_RIGHTDOWN = 0x08;
+        private const int MOUSEEVENTF_RIGHTUP = 0x10;
+
         List<Color> colors = new List<Color>();
         List<Point> colorPositions = new List<Point>();
 
@@ -130,7 +139,7 @@ namespace GarticCheat
                 Log("Start : (" + start.X + ";" + start.Y + ") End : (" + end.X + ";" + end.Y + ")");
                 panel1.Visible = false;
 
-                imageToDraw = (Bitmap)imagePreview.Image.GetThumbnailImage(end.X - start.X, end.Y - start.Y, null, IntPtr.Zero);
+                imageToDraw = ProcessImage((Bitmap)imagePreview.Image.GetThumbnailImage(end.X - start.X, end.Y - start.Y, null, IntPtr.Zero));
                 Log("Image(" + imageToDraw.Size.Width + ";" + imageToDraw.Size.Height + ") ready !");
 
                 panel1.Visible = false;
@@ -188,6 +197,52 @@ namespace GarticCheat
 
             panel2.Dock = DockStyle.Fill;
             panel2.BackColor = Color.FromArgb(100, 0, 0, 0);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if(imageToDraw != null)
+            {
+                this.TopMost = true;
+                button4.Text = "Stop (Ctrl + Alt + C)";
+
+                List<List<Point>> points = new List<List<Point>>();
+                foreach (Color color in colors)
+                {
+                    points.Add(new List<Point>());
+                }
+
+                for (int y = 0; y < imageToDraw.Height; y++)
+                {
+                    for (int x = 0; x < imageToDraw.Width; x++)
+                    {
+                        if(imageToDraw.GetPixel(x, y) != Color.FromArgb(255,255,255))
+                        {
+                            points[colors.IndexOf(imageToDraw.GetPixel(x, y))].Add(new Point(start.X + x, start.Y + y));
+                            x += 4;
+                        }
+                    }
+                    y += 4;
+                }
+
+                foreach (List<Point> currentList in points)
+                {
+                    GenerateClick(colorPositions[points.IndexOf(currentList)]);
+                    System.Threading.Thread.Sleep(100);
+
+                    foreach (Point point in currentList)
+                    {
+                        GenerateClick(point);
+                        System.Threading.Thread.Sleep(10);
+                    }
+                }
+            }
+        }
+
+        private void GenerateClick(Point position)
+        {
+            Cursor.Position = position;
+            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)position.X, (uint)position.Y, 0, UIntPtr.Zero);
         }
     }
 }
