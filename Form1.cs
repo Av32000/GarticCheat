@@ -11,6 +11,10 @@ namespace GarticCheat
     {
         List<Color> colors = new List<Color>();
 
+        Point start = new Point(0,0);
+        Point end = new Point(0, 0);
+
+        Color formColor;
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +36,9 @@ namespace GarticCheat
             colors.Add(Color.FromArgb(255, 193, 38));
             colors.Add(Color.FromArgb(255, 0, 143));
             colors.Add(Color.FromArgb(254, 175, 168));
+
+            formColor = BackColor;
+            // panel1.BackColor = Color.FromArgb(100, 30, 30, 30);
 
             Log(colors.Count + " colors loaded !");
         }
@@ -108,6 +115,37 @@ namespace GarticCheat
         private void Log(string log)
         {
             logLabel.Text += "\n" + log;
+        }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+            if (start.X == 0 && start.Y == 0) start = Cursor.Position;
+            else end = Cursor.Position;
+
+            if(start != new Point(0,0) && end != new Point(0, 0))
+            {
+                positionLabel.Text = "Start : (" + start.X + ";" + start.Y + ") End : (" + end.X + ";" + end.Y + ")";
+                Log("Start : (" + start.X + ";" + start.Y + ") End : (" + end.X + ";" + end.Y + ")");
+                panel1.Visible = false;
+
+                FormBorderStyle = FormBorderStyle.Sizable;
+                WindowState = FormWindowState.Normal;
+                BackColor = formColor;
+                this.Opacity = 1;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+
+            this.BackColor = Color.Black;
+            this.Opacity = 0.5;
+
+            panel1.Dock = DockStyle.Fill;
+            panel1.BackColor = Color.FromArgb(100, 0, 0, 0);
         }
     }
 }
