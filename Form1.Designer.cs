@@ -36,6 +36,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.positionLabel = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.colorsLabel = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imagePreview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,9 +83,9 @@
             // logLabel
             // 
             this.logLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.logLabel.Location = new System.Drawing.Point(12, 473);
+            this.logLabel.Location = new System.Drawing.Point(12, 442);
             this.logLabel.Name = "logLabel";
-            this.logLabel.Size = new System.Drawing.Size(295, 76);
+            this.logLabel.Size = new System.Drawing.Size(295, 107);
             this.logLabel.TabIndex = 5;
             this.logLabel.Text = "Log :";
             // 
@@ -90,10 +93,9 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(319, 558);
+            this.panel1.Size = new System.Drawing.Size(88, 10);
             this.panel1.TabIndex = 6;
             this.panel1.Visible = false;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
@@ -101,7 +103,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 259);
+            this.button2.Location = new System.Drawing.Point(12, 319);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(295, 23);
             this.button2.TabIndex = 7;
@@ -111,18 +113,52 @@
             // 
             // positionLabel
             // 
-            this.positionLabel.Location = new System.Drawing.Point(47, 289);
+            this.positionLabel.Location = new System.Drawing.Point(47, 349);
             this.positionLabel.Name = "positionLabel";
             this.positionLabel.Size = new System.Drawing.Size(224, 23);
             this.positionLabel.TabIndex = 8;
             this.positionLabel.Text = "Select Point First";
             this.positionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.panel2.Location = new System.Drawing.Point(219, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(88, 10);
+            this.panel2.TabIndex = 7;
+            this.panel2.Visible = false;
+            this.panel2.Click += new System.EventHandler(this.panel2_Click);
+            // 
+            // colorsLabel
+            // 
+            this.colorsLabel.Location = new System.Drawing.Point(47, 285);
+            this.colorsLabel.Name = "colorsLabel";
+            this.colorsLabel.Size = new System.Drawing.Size(224, 23);
+            this.colorsLabel.TabIndex = 12;
+            this.colorsLabel.Text = "Select Colors Position First";
+            this.colorsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(12, 259);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(295, 23);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Select Palette";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(319, 558);
+            this.Controls.Add(this.colorsLabel);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.positionLabel);
             this.Controls.Add(this.button2);
@@ -149,6 +185,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label positionLabel;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label colorsLabel;
+        private System.Windows.Forms.Button button3;
     }
 }
 

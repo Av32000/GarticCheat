@@ -10,11 +10,14 @@ namespace GarticCheat
     public partial class Form1 : Form
     {
         List<Color> colors = new List<Color>();
+        List<Point> colorPositions = new List<Point>();
 
         Point start = new Point(0,0);
         Point end = new Point(0, 0);
 
         Color formColor;
+
+        Bitmap imageToDraw = null;
         public Form1()
         {
             InitializeComponent();
@@ -127,6 +130,10 @@ namespace GarticCheat
                 Log("Start : (" + start.X + ";" + start.Y + ") End : (" + end.X + ";" + end.Y + ")");
                 panel1.Visible = false;
 
+                imageToDraw = (Bitmap)imagePreview.Image.GetThumbnailImage(end.X - start.X, end.Y - start.Y, null, IntPtr.Zero);
+                Log("Image(" + imageToDraw.Size.Width + ";" + imageToDraw.Size.Height + ") ready !");
+
+                panel1.Visible = false;
                 FormBorderStyle = FormBorderStyle.Sizable;
                 WindowState = FormWindowState.Normal;
                 BackColor = formColor;
@@ -148,6 +155,39 @@ namespace GarticCheat
 
             panel1.Dock = DockStyle.Fill;
             panel1.BackColor = Color.FromArgb(100, 0, 0, 0);
+        }
+
+        private void panel2_Click(object sender, EventArgs e)
+        {
+            colorPositions.Add(Cursor.Position);
+
+            if(colorPositions.Count == colors.Count)
+            {
+                colorsLabel.Text = "Colors Ready !";
+
+                Log(colorPositions.Count + " positions loaded !");
+
+                panel2.Visible = false;
+                FormBorderStyle = FormBorderStyle.Sizable;
+                WindowState = FormWindowState.Normal;
+                BackColor = formColor;
+                this.Opacity = 1;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            colorPositions.Clear();
+
+            panel2.Visible = true;
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+
+            this.BackColor = Color.Black;
+            this.Opacity = 0.5;
+
+            panel2.Dock = DockStyle.Fill;
+            panel2.BackColor = Color.FromArgb(100, 0, 0, 0);
         }
     }
 }
