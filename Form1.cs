@@ -66,6 +66,11 @@ namespace GarticCheat
                         Image image = Image.FromStream(ms);
                         imagePreview.Image = ProcessImage(CreateNonIndexedImage(image));
 
+                        if(imageToDraw != null)
+                        {
+                            imageToDraw = ProcessImage((Bitmap)imagePreview.Image.GetThumbnailImage(end.X - start.X, end.Y - start.Y, null, IntPtr.Zero));
+                        }
+
                         Log((image.Size.Width * image.Size.Height) + " pixels loaded (" + image.Size.Width + ";" + image.Size.Height + ")");
                     }
                 }
@@ -201,6 +206,22 @@ namespace GarticCheat
 
         private void button4_Click(object sender, EventArgs e)
         {
+            int offset = 0;
+            switch (trackBar1.Value)
+            {
+                case 1:
+                    offset = 0;
+                    break;
+                case 2:
+                    offset = 5;
+                    break;
+                case 3:
+                    offset = 11;
+                    break;
+                case 4:
+                    offset = 20;
+                    break;
+            }
             if(imageToDraw != null)
             {
                 this.TopMost = true;
@@ -219,10 +240,10 @@ namespace GarticCheat
                         if(imageToDraw.GetPixel(x, y) != Color.FromArgb(255,255,255))
                         {
                             points[colors.IndexOf(imageToDraw.GetPixel(x, y))].Add(new Point(start.X + x, start.Y + y));
-                            x += 4;
+                            x += offset;
                         }
                     }
-                    y += 4;
+                    y += offset;
                 }
 
                 foreach (List<Point> currentList in points)

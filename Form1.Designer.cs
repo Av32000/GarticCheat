@@ -41,7 +41,9 @@
             this.colorsLabel = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.imagePreview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -85,9 +87,9 @@
             // logLabel
             // 
             this.logLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.logLabel.Location = new System.Drawing.Point(12, 442);
+            this.logLabel.Location = new System.Drawing.Point(12, 460);
             this.logLabel.Name = "logLabel";
-            this.logLabel.Size = new System.Drawing.Size(295, 107);
+            this.logLabel.Size = new System.Drawing.Size(295, 89);
             this.logLabel.TabIndex = 5;
             this.logLabel.Text = "Log :";
             // 
@@ -156,19 +158,32 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Stencil", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(12, 375);
+            this.button4.Location = new System.Drawing.Point(12, 410);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(295, 64);
+            this.button4.Size = new System.Drawing.Size(295, 41);
             this.button4.TabIndex = 13;
             this.button4.Text = "Draw";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.AutoSize = false;
+            this.trackBar1.LargeChange = 1;
+            this.trackBar1.Location = new System.Drawing.Point(12, 375);
+            this.trackBar1.Maximum = 5;
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(295, 29);
+            this.trackBar1.TabIndex = 14;
+            this.trackBar1.Value = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(319, 558);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.colorsLabel);
             this.Controls.Add(this.button3);
@@ -183,8 +198,9 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Gartic Cheat";
             ((System.ComponentModel.ISupportInitialize)(this.imagePreview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,6 +220,7 @@
         private System.Windows.Forms.Label colorsLabel;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 
