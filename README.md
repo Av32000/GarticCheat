@@ -2,7 +2,7 @@
 Gartic Cheat is a software coded in C# that allows you to draw for you in the game Gartc Phone. You just have to import an image, select a drawing area and let the software take control of your mouse to draw for you.
 
 ## Usage
-1. Download the [latest version](https://github.com/Av32000/GarticCheat/releases/latest)
+1. Download the [latest release](https://github.com/Av32000/GarticCheat/releases/latest)
 2. Extract the files
 3. Run GarticCheat.exe
 4. Click on Select Palette
