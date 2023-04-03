@@ -33,7 +33,6 @@
             this.imageURL = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.imagePreview = new System.Windows.Forms.PictureBox();
-            this.logLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.positionLabel = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.logTxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.imagePreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -87,15 +87,6 @@
             this.imagePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imagePreview.TabIndex = 3;
             this.imagePreview.TabStop = false;
-            // 
-            // logLabel
-            // 
-            this.logLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.logLabel.Location = new System.Drawing.Point(12, 469);
-            this.logLabel.Name = "logLabel";
-            this.logLabel.Size = new System.Drawing.Size(295, 89);
-            this.logLabel.TabIndex = 5;
-            this.logLabel.Text = "Log :";
             // 
             // panel1
             // 
@@ -223,11 +214,21 @@
             0,
             65536});
             // 
+            // logTxt
+            // 
+            this.logTxt.Location = new System.Drawing.Point(12, 466);
+            this.logTxt.Multiline = true;
+            this.logTxt.Name = "logTxt";
+            this.logTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.logTxt.Size = new System.Drawing.Size(295, 89);
+            this.logTxt.TabIndex = 19;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(319, 566);
+            this.Controls.Add(this.logTxt);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -239,7 +240,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.positionLabel);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.logLabel);
             this.Controls.Add(this.imagePreview);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.imageURL);
@@ -261,7 +261,6 @@
         private System.Windows.Forms.TextBox imageURL;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox imagePreview;
-        private System.Windows.Forms.Label logLabel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label positionLabel;
@@ -273,6 +272,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TextBox logTxt;
     }
 }
 

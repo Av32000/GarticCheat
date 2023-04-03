@@ -130,7 +130,7 @@ namespace GarticCheat
 
         private void Log(string log)
         {
-            logLabel.Text += "\n" + log;
+            logTxt.Text += "\n" + log;
         }
 
         private void panel1_Click(object sender, EventArgs e)
