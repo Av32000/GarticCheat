@@ -206,6 +206,8 @@ namespace GarticCheat
 
         private void button4_Click(object sender, EventArgs e)
         {
+            int cps = (int)Math.Round(1000 / numericUpDown1.Value, 0);
+            Log("CPS : " + cps);
             int offset = 0;
             switch (trackBar1.Value)
             {
@@ -225,7 +227,6 @@ namespace GarticCheat
             if(imageToDraw != null)
             {
                 this.TopMost = true;
-                button4.Text = "Stop (Ctrl + Alt + C)";
 
                 List<List<Point>> points = new List<List<Point>>();
                 foreach (Color color in colors)
@@ -254,7 +255,7 @@ namespace GarticCheat
                     foreach (Point point in currentList)
                     {
                         GenerateClick(point);
-                        System.Threading.Thread.Sleep(10);
+                        System.Threading.Thread.Sleep(cps);
                     }
                 }
             }
