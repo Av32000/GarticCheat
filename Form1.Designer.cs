@@ -222,6 +222,7 @@
             this.logTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.logTxt.Size = new System.Drawing.Size(295, 89);
             this.logTxt.TabIndex = 19;
+            this.logTxt.ReadOnly = true;
             // 
             // Form1
             // 
@@ -247,6 +248,10 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Gartic Cheat";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
+            this.MaximizeBox = false;
             ((System.ComponentModel.ISupportInitialize)(this.imagePreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

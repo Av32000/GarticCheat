@@ -15,8 +15,6 @@ namespace GarticCheat
 
         private const int MOUSEEVENTF_LEFTDOWN = 0x02;
         private const int MOUSEEVENTF_LEFTUP = 0x04;
-        private const int MOUSEEVENTF_RIGHTDOWN = 0x08;
-        private const int MOUSEEVENTF_RIGHTUP = 0x10;
 
         List<Color> colors = new List<Color>();
         List<Point> colorPositions = new List<Point>();
@@ -66,9 +64,10 @@ namespace GarticCheat
                         Image image = Image.FromStream(ms);
                         imagePreview.Image = ProcessImage(CreateNonIndexedImage(image));
 
-                        if(imageToDraw != null)
+                        if(imageToDraw != null || (start != new Point(0, 0) && end != new Point(0, 0)))
                         {
                             imageToDraw = ProcessImage((Bitmap)imagePreview.Image.GetThumbnailImage(end.X - start.X, end.Y - start.Y, null, IntPtr.Zero));
+                            Log("Image(" + imageToDraw.Size.Width + ";" + imageToDraw.Size.Height + ") ready !");
                         }
 
                         Log((image.Size.Width * image.Size.Height) + " pixels loaded (" + image.Size.Width + ";" + image.Size.Height + ")");
@@ -130,7 +129,7 @@ namespace GarticCheat
 
         private void Log(string log)
         {
-            logTxt.Text += "\n" + log;
+            logTxt.AppendText(log + "\r\n");
         }
 
         private void panel1_Click(object sender, EventArgs e)
@@ -144,8 +143,10 @@ namespace GarticCheat
                 Log("Start : (" + start.X + ";" + start.Y + ") End : (" + end.X + ";" + end.Y + ")");
                 panel1.Visible = false;
 
-                imageToDraw = ProcessImage((Bitmap)imagePreview.Image.GetThumbnailImage(end.X - start.X, end.Y - start.Y, null, IntPtr.Zero));
-                Log("Image(" + imageToDraw.Size.Width + ";" + imageToDraw.Size.Height + ") ready !");
+                if (imageToDraw != null) {
+                    imageToDraw = ProcessImage((Bitmap)imagePreview.Image.GetThumbnailImage(end.X - start.X, end.Y - start.Y, null, IntPtr.Zero));
+                    Log("Image(" + imageToDraw.Size.Width + ";" + imageToDraw.Size.Height + ") ready !");
+                }
 
                 panel1.Visible = false;
                 FormBorderStyle = FormBorderStyle.Sizable;
@@ -206,8 +207,8 @@ namespace GarticCheat
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int cps = (int)Math.Round(1000 / numericUpDown1.Value, 0);
-            Log("CPS : " + cps);
+            int tbc = (int)Math.Round(1000 / numericUpDown1.Value, 0);
+            Log("Time between clicks : " + tbc + "ms");
             int offset = 0;
             switch (trackBar1.Value)
             {
@@ -255,10 +256,12 @@ namespace GarticCheat
                     foreach (Point point in currentList)
                     {
                         GenerateClick(point);
-                        System.Threading.Thread.Sleep(cps);
+                        System.Threading.Thread.Sleep(tbc);
                     }
                 }
             }
+
+            Log("Finished !");
         }
 
         private void GenerateClick(Point position)
