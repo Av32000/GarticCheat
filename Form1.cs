@@ -149,6 +149,7 @@ namespace GarticCheat
                 }
 
                 panel1.Visible = false;
+                this.MaximumSize = new Size(335, 605);
                 FormBorderStyle = FormBorderStyle.Sizable;
                 WindowState = FormWindowState.Normal;
                 BackColor = formColor;
@@ -162,6 +163,7 @@ namespace GarticCheat
             end = new Point(0, 0);
 
             panel1.Visible = true;
+            this.MaximumSize = new Size(0, 0);
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
 
@@ -185,6 +187,7 @@ namespace GarticCheat
                 panel2.Visible = false;
                 FormBorderStyle = FormBorderStyle.Sizable;
                 WindowState = FormWindowState.Normal;
+                this.MaximumSize = new Size(335, 605);
                 BackColor = formColor;
                 this.Opacity = 1;
             }
@@ -195,6 +198,7 @@ namespace GarticCheat
             colorPositions.Clear();
 
             panel2.Visible = true;
+            this.MaximumSize = new Size(0, 0);
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
 
